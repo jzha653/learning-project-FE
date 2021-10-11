@@ -1,18 +1,21 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import OverviewScreen from './Overview/OverviewScreen';
 import ProfileScreen from './Profile/ProfileScreen';
-import ActivityNavigator from './Activity/ActivityNavigator';
+import {RootRoutes} from '../../Routes/Routes';
+import ActivityScreen from './Activity/ActivityScreen';
 
 const Tab = createBottomTabNavigator();
 export default function MainScreen() {
   return (
-    <Tab.Navigator initialRouteName="Home">
+    <Tab.Navigator
+      initialRouteName={RootRoutes.ScreensGroup.MainTabsNavigator.name}>
       <Tab.Screen
-        name="Overview"
+        name={RootRoutes.ScreensGroup.MainTabsNavigator.OverviewScreen}
         component={OverviewScreen}
         options={{
           tabBarLabel: 'Homescreen',
+          headerShown: false,
           // tabBarIcon: ({focused}) =>
           //   focused ? (
           //     <Icon
@@ -26,13 +29,19 @@ export default function MainScreen() {
         }}
       />
       <Tab.Screen
-        name="ActivityNav"
-        component={ActivityNavigator}
+        name={RootRoutes.ScreensGroup.MainTabsNavigator.ActivityScreen}
+        component={ActivityScreen}
         options={{
           headerShown: false,
         }}
       />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
+      <Tab.Screen
+        name={RootRoutes.ScreensGroup.MainTabsNavigator.ProfileScreen}
+        component={ProfileScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Tab.Navigator>
   );
 }
