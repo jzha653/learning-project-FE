@@ -12,10 +12,14 @@ import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import {useCallback} from 'react';
 import {View} from 'react-native';
 import Colours from '../Theme/Colours';
+import Reactotron from 'reactotron-react-native';
 
 export default function App() {
+  Reactotron.log('hello rendering world');
+
   const Stack = createStackNavigator();
   const getTitle = useCallback(route => {
+    console.log('test');
     let routeName = getFocusedRouteNameFromRoute(route) ?? 'Overview';
     switch (routeName) {
       case 'OverviewScreen':
