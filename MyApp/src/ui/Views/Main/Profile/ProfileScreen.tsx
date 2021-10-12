@@ -1,15 +1,23 @@
 import {Button, Text, View} from 'react-native';
 import * as React from 'react';
-import {RootRoutes} from '../../../Routes/Routes';
+import {ScreenNavigationProp} from '../../../Types/navigationTypes';
+import {useNavigation} from '@react-navigation/native';
+import AppScreen from '../../../Theme/AppScreen/AppScreen';
 
-export default function ProfileScreen({navigation}) {
-  return (
+export default function ProfileScreen() {
+  const navigation = useNavigation<ScreenNavigationProp>();
+  const content = (
     <View>
       <Text>Profile</Text>
       <Button
+        title="Edit Name"
+        onPress={() => navigation.navigate('EditNameModal')}
+      />
+      <Button
         title="Log out"
-        onPress={() => navigation.navigate(RootRoutes.ScreensGroup.AuthScreen)}
+        onPress={() => navigation.navigate('AuthScreen')}
       />
     </View>
   );
+  return <AppScreen children={content}></AppScreen>;
 }

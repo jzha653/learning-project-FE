@@ -11,6 +11,7 @@ import {RootRoutes} from '../Routes/Routes';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import {useCallback} from 'react';
 import {View} from 'react-native';
+import Colours from '../Theme/Colours';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -42,6 +43,15 @@ export default function App() {
           <Stack.Screen
             name={RootRoutes.ScreensGroup.AuthScreen}
             component={AuthScreen}
+            options={{
+              headerStyle: {
+                backgroundColor: Colours.titleBar,
+                elevation: 0,
+                shadowOpacity: 0,
+                borderBottomWidth: 0,
+              },
+              headerTintColor: '#fff',
+            }}
           />
           <Stack.Screen
             name={RootRoutes.ScreensGroup.MainTabsNavigator.name}
@@ -49,11 +59,27 @@ export default function App() {
             options={({route}) => ({
               title: getTitle(route),
               headerLeft: () => <View />,
+              headerStyle: {
+                backgroundColor: Colours.titleBar,
+                elevation: 0,
+                shadowOpacity: 0,
+                borderBottomWidth: 0,
+              },
+              headerTintColor: '#fff',
             })}
           />
           <Stack.Screen
             name={RootRoutes.ScreensGroup.NewTransactionScreen}
             component={NewTransactionScreen}
+            options={{
+              headerStyle: {
+                backgroundColor: Colours.titleBar,
+                elevation: 0,
+                shadowOpacity: 0,
+                borderBottomWidth: 0,
+              },
+              headerTintColor: '#fff',
+            }}
           />
         </Stack.Group>
         <Stack.Group screenOptions={{presentation: 'modal'}}>

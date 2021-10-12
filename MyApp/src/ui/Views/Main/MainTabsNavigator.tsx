@@ -4,12 +4,18 @@ import OverviewScreen from './Overview/OverviewScreen';
 import ProfileScreen from './Profile/ProfileScreen';
 import {RootRoutes} from '../../Routes/Routes';
 import ActivityScreen from './Activity/ActivityScreen';
+import Colours from '../../Theme/Colours';
 
 const Tab = createBottomTabNavigator();
 export default function MainScreen() {
   return (
     <Tab.Navigator
-      initialRouteName={RootRoutes.ScreensGroup.MainTabsNavigator.name}>
+      initialRouteName={RootRoutes.ScreensGroup.MainTabsNavigator.name}
+      screenOptions={{
+        tabBarStyle: {
+          backgroundColor: Colours.titleBar,
+        },
+      }}>
       <Tab.Screen
         name={RootRoutes.ScreensGroup.MainTabsNavigator.OverviewScreen}
         component={OverviewScreen}
