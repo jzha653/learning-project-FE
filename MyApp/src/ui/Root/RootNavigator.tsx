@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import AuthScreen from '../Views/Auth/AuthScreen';
@@ -8,81 +8,48 @@ import EditNameModal from '../Modal/EditNameModal';
 import SelectCategoryModal from '../Modal/SelectCategoryModal';
 
 import {RootRoutes} from '../Routes/Routes';
-import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
-import {useCallback} from 'react';
-import {View} from 'react-native';
-import Colours from '../Theme/Colours';
 import Reactotron from 'reactotron-react-native';
+import {RootStackParamList} from '../Types/navigationTypes';
+// TODO: move to App, move config to SRC
+import('../../config/ReactotronConfig').then(() =>
+  console.log('Reactotron Configured'),
+);
 
 export default function App() {
-  Reactotron.log('hello rendering world');
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  Reactotron.log!('hello rendering world');
 
-  const Stack = createStackNavigator();
-  const getTitle = useCallback(route => {
-    console.log('test');
-    let routeName = getFocusedRouteNameFromRoute(route) ?? 'Overview';
-    switch (routeName) {
-      case 'OverviewScreen':
-        routeName = 'Overview';
-        break;
-
-      case 'ActivityScreen':
-        routeName = 'Activity';
-        break;
-
-      case 'ProfileScreen':
-        routeName = 'Profile';
-        break;
-
-      default:
-        routeName = 'Overview';
-        break;
-    }
-    return routeName;
-  }, []);
+  const Stack = createStackNavigator<RootStackParamList>();
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerTransparent: true,
+        }}>
         <Stack.Group>
           <Stack.Screen
             name={RootRoutes.ScreensGroup.AuthScreen}
             component={AuthScreen}
             options={{
-              headerStyle: {
-                backgroundColor: Colours.titleBar,
-                elevation: 0,
-                shadowOpacity: 0,
-                borderBottomWidth: 0,
-              },
-              headerTintColor: '#fff',
+              headerShown: false,
+              headerTransparent: true,
             }}
           />
           <Stack.Screen
             name={RootRoutes.ScreensGroup.MainTabsNavigator.name}
             component={MainTabsNavigator}
-            options={({route}) => ({
-              title: getTitle(route),
-              headerLeft: () => <View />,
-              headerStyle: {
-                backgroundColor: Colours.titleBar,
-                elevation: 0,
-                shadowOpacity: 0,
-                borderBottomWidth: 0,
-              },
-              headerTintColor: '#fff',
-            })}
+            options={{
+              headerShown: false,
+              headerTransparent: false,
+              title: 'doge',
+            }}
           />
           <Stack.Screen
             name={RootRoutes.ScreensGroup.NewTransactionScreen}
             component={NewTransactionScreen}
             options={{
-              headerStyle: {
-                backgroundColor: Colours.titleBar,
-                elevation: 0,
-                shadowOpacity: 0,
-                borderBottomWidth: 0,
-              },
-              headerTintColor: '#fff',
+              headerShown: false,
+              headerTransparent: true,
             }}
           />
         </Stack.Group>
@@ -90,10 +57,16 @@ export default function App() {
           <Stack.Screen
             name={RootRoutes.ModalsGroup.EditNameModal}
             component={EditNameModal}
+            options={{
+              headerShown: false,
+            }}
           />
           <Stack.Screen
             name={RootRoutes.ModalsGroup.SelectCategoryModal}
             component={SelectCategoryModal}
+            options={{
+              headerShown: false,
+            }}
           />
         </Stack.Group>
       </Stack.Navigator>

@@ -6,18 +6,19 @@ import AppScreen from '../../../Theme/AppScreen/AppScreen';
 
 export default function ProfileScreen() {
   const navigation = useNavigation<ScreenNavigationProp>();
-  const content = (
-    <View>
-      <Text>Profile</Text>
-      <Button
-        title="Edit Name"
-        onPress={() => navigation.navigate('EditNameModal')}
-      />
-      <Button
-        title="Log out"
-        onPress={() => navigation.navigate('AuthScreen')}
-      />
-    </View>
+  return (
+    <AppScreen>
+      <View>
+        <Text>Profile</Text>
+        <Button
+          title="Edit Name"
+          onPress={() => navigation.navigate('EditNameModal')}
+        />
+        <Button
+          title="Log out"
+          onPress={() => navigation.navigate('AuthScreen')}
+        />
+      </View>
+    </AppScreen>
   );
-  return <AppScreen children={content}></AppScreen>;
 }

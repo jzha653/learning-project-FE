@@ -1,4 +1,3 @@
-
 export const fontSizes = {
   tiny: 8,
   evenSmaller: 10,

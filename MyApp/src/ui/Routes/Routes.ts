@@ -15,4 +15,4 @@ export const RootRoutes = {
     EditNameModal: 'EditNameModal',
     SelectCategoryModal: 'SelectCategoryModal',
   },
-};
+} as const;

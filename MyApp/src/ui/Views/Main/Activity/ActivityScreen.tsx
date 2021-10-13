@@ -6,14 +6,15 @@ import {ScreenNavigationProp} from '../../../Types/navigationTypes';
 
 export default function ActivityScreen() {
   const navigation = useNavigation<ScreenNavigationProp>();
-  const content = (
-    <View>
-      <Text>Activity </Text>
-      <Button
-        title="New"
-        onPress={() => navigation.navigate('NewTransactionScreen')}
-      />
-    </View>
+  return (
+    <AppScreen>
+      <View>
+        <Text>Activity </Text>
+        <Button
+          title="New"
+          onPress={() => navigation.navigate('NewTransactionScreen')}
+        />
+      </View>
+    </AppScreen>
   );
-  return <AppScreen children={content}></AppScreen>;
 }
