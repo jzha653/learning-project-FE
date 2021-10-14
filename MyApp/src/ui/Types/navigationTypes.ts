@@ -2,6 +2,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 
 // overview screen here
 export type RootStackParamList = {
+  SplashScreen: undefined;
   AuthScreen: undefined;
   MainTabsNavigator: undefined;
   OverviewScreen: undefined;

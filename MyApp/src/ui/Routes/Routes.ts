@@ -9,6 +9,7 @@ export const RootRoutes = {
       ProfileScreen: 'ProfileScreen',
     },
     NewTransactionScreen: 'NewTransactionScreen',
+    SplashScreen: 'SplashScreen',
   },
   ModalsGroup: {
     name: 'ModalsGroup',
