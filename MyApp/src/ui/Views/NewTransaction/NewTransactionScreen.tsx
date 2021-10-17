@@ -1,12 +1,13 @@
 import {Button, Image, Text, View, TouchableOpacity} from 'react-native';
 import React, {useCallback} from 'react';
-import {ScreenNavigationProp} from '../../Types/navigationTypes';
 import {useNavigation} from '@react-navigation/native';
-import AppScreen from '../../Theme/AppScreen/AppScreen';
+
+import {ScreenNavigationProp} from '@ui/Types/navigationTypes';
+import AppScreen from '@ui/Theme/AppScreen/AppScreen';
 
 export default function NewTransactionScreen() {
   const Assets = {
-    back: require('../../../../assets/images/icons/BackButtonForDark.webp'),
+    back: require('@icons/BackButtonForDark.webp'),
   };
   const navigation = useNavigation<ScreenNavigationProp>();
   const navigateBack = useCallback(() => {

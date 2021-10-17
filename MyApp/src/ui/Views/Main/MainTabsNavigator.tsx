@@ -1,20 +1,22 @@
 import React, {useCallback} from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import OverviewScreen from './Overview/OverviewScreen';
-import ProfileScreen from './Profile/ProfileScreen';
-import {RootRoutes} from '../../Routes/Routes';
-import ActivityScreen from './Activity/ActivityScreen';
 import {Image, TouchableOpacity} from 'react-native';
+
 import {useNavigation} from '@react-navigation/core';
-import {ScreenNavigationProp} from 'src/ui/Types/navigationTypes';
-import Colours from '../../Theme/Colours';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+
+import OverviewScreen from '@ui/Views/Main/Overview/OverviewScreen';
+import ProfileScreen from '@ui/Views/Main/Profile/ProfileScreen';
+import {RootRoutes} from '@ui/Routes/Routes';
+import ActivityScreen from '@ui/Views/Main/Activity/ActivityScreen';
+import {ScreenNavigationProp} from '@ui/Types/navigationTypes';
+import Colours from '@ui/Theme/Colours';
 
 const Tab = createBottomTabNavigator();
 export default function MainScreen() {
   const navigation = useNavigation<ScreenNavigationProp>();
 
   const Assets = {
-    back: require('../../../../assets/images/icons/add.webp'),
+    back: require('@icons/add.webp'),
   };
   const getTitle = useCallback(route => {
     let routeName = route.name;

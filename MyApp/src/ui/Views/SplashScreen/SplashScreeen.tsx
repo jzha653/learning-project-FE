@@ -1,7 +1,16 @@
-import {Text, View} from 'react-native';
+import {Text} from 'react-native';
 import React, {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
-import {initApp, initUser} from '../../../store/reducers/AuthReducer';
+
+import {initApp} from '@domain/reducers/AuthReducer';
+import styled from 'styled-components';
+
+const Backgroud = styled.View`
+  backgroundcolor: red;
+  width: 100%;
+  height: 100%;
+`;
+
 export default function SplashScreen() {
   const dispatch = useDispatch();
 
@@ -10,10 +19,10 @@ export default function SplashScreen() {
       dispatch(initApp());
     }, 3000);
   });
+
   return (
-    // eslint-disable-next-line react-native/no-inline-styles
-    <View style={{backgroundColor: 'red', width: '100%', height: '100%'}}>
+    <Backgroud>
       <Text>blablabla</Text>
-    </View>
+    </Backgroud>
   );
 }

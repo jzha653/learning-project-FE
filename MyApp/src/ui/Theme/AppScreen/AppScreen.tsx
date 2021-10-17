@@ -1,9 +1,8 @@
 import React from 'react';
-import Background from './Background/Background';
+import Background from '@ui/Theme/AppScreen/Background/Background';
 
 export interface AppScreenProps {
   title?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   children?: React.ReactElement<any> | null;
   headerLeft?: React.ReactElement<any> | null;
   headerRight?: React.ReactElement<any> | null;

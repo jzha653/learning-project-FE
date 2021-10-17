@@ -1,22 +1,16 @@
 import React, {useCallback} from 'react';
 import {Button, Text, View} from 'react-native';
-import AppScreen from '../../Theme/AppScreen/AppScreen';
-// import {ScreenNavigationProp} from '../../Types/navigationTypes';
 import {useDispatch} from 'react-redux';
-import {initUser} from '../../../store/reducers/AuthReducer';
+
+import AppScreen from '@ui/Theme/AppScreen/AppScreen';
+import {initUser} from '@domain/reducers/AuthReducer';
 
 export default function AuthScreen() {
-  // const navigation = useNavigation<ScreenNavigationProp>();
-  // const navigateToMain = useCallback(
-  //   () => navigation.navigate('MainTabsNavigator'),
-  //   [navigation],
-  // );
   const dispatch = useDispatch();
 
-  const onLogin = () => {
-    dispatch(initUser);
-    console.log('login');
-  };
+  const onLogin = useCallback(() => {
+    dispatch(initUser());
+  }, [dispatch]);
 
   return (
     <AppScreen title="Auth">

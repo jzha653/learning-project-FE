@@ -1,8 +1,9 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import styled from 'styled-components/native';
-import Colours from '../../Colours';
-import Dimension from '../../Measure';
+
+import Colours from '@ui/Theme/Colours';
+import Dimension from '@ui/Theme/Measure';
 
 const Container = styled.View`
   width: 100%;

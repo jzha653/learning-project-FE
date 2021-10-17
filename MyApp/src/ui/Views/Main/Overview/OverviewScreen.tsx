@@ -1,6 +1,7 @@
 import {Text} from 'react-native';
-import * as React from 'react';
-import AppScreen from '../../../Theme/AppScreen/AppScreen';
+import React from 'react';
+
+import AppScreen from '@ui/Theme/AppScreen/AppScreen';
 
 export default function OverviewScreen() {
   return (

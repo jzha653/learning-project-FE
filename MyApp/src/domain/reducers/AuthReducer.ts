@@ -1,7 +1,9 @@
 import {persistReducer} from 'redux-persist';
-import {AsyncStorage} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import {createSlice} from '@reduxjs/toolkit';
-const initialState = {
+import {AuthState} from '@domain/types/AuthTypes';
+
+const initialState: AuthState = {
   isAppInitiailised: false,
   isUserInitialised: false,
   token: null,
@@ -12,23 +14,24 @@ export const AuthReducer = createSlice({
   initialState: initialState,
   reducers: {
     initApp(state) {
-      console.log('123');
       state.isAppInitiailised = true;
     },
     initUser(state) {
-      console.log('321');
-
+      state.isUserInitialised = true;
+    },
+    signUpAction(state) {
       state.isUserInitialised = true;
     },
   },
 });
 
 const persistConfig = {
-  key: 'root',
+  key: 'initialState',
   storage: AsyncStorage,
+  whitelist: ['token'],
 };
 
-export const {initApp, initUser} = AuthReducer.actions;
+export const {initApp, initUser, signUpAction} = AuthReducer.actions;
 
 export const AuthPersistedReducer = persistReducer(
   persistConfig,

@@ -1,33 +1,29 @@
 import React from 'react';
+import {useSelector} from 'react-redux';
+
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
-import AuthScreen from '../Views/Auth/AuthScreen';
-import MainTabsNavigator from '../Views/Main/MainTabsNavigator';
-import NewTransactionScreen from '../Views/NewTransaction/NewTransactionScreen';
-import EditNameModal from '../Modal/EditNameModal';
-import SelectCategoryModal from '../Modal/SelectCategoryModal';
 
-import {RootRoutes} from '../Routes/Routes';
-import Reactotron from 'reactotron-react-native';
-import {RootStackParamList} from '../Types/navigationTypes';
-import SplashScreen from '../Views/SplashScreen/SplashScreeen';
-import {store} from '../../store/store';
-// TODO: move to App, move config to SRC
-import('../../config/ReactotronConfig').then(() =>
-  console.log('Reactotron Configured'),
-);
+import AuthScreen from '@ui/Views/Auth/AuthScreen';
+import MainTabsNavigator from '@ui/Views/Main/MainTabsNavigator';
+import NewTransactionScreen from '@ui/Views/NewTransaction/NewTransactionScreen';
+import EditNameModal from '@ui/Modal/EditNameModal';
+import SelectCategoryModal from '@ui/Modal/SelectCategoryModal';
+import {RootRoutes} from '@ui/Routes/Routes';
+import {RootStackParamList} from '@ui/Types/navigationTypes';
+import SplashScreen from '@ui/Views/SplashScreen/SplashScreeen';
+import {
+  getIsAppInitialized,
+  getIsUserInitialized,
+} from '@domain/selectors/AuthSelectors';
 
 export default function RootNavigator() {
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  Reactotron.log!('hello rendering world');
-
   const Stack = createStackNavigator<RootStackParamList>();
 
-  console.log('init');
+  const isAppInitiailised = useSelector(getIsAppInitialized);
+  const isUserInitialised = useSelector(getIsUserInitialized);
 
-  console.log(store.getState().auth.isAppInitiailised);
-
-  if (!store.getState().auth.isAppInitiailised) {
+  if (!isAppInitiailised) {
     return (
       <NavigationContainer>
         <Stack.Navigator
@@ -49,7 +45,7 @@ export default function RootNavigator() {
     );
   }
 
-  if (!store.getState().auth.isUserInitialised) {
+  if (!isUserInitialised) {
     return (
       <NavigationContainer>
         <Stack.Navigator

@@ -41,16 +41,10 @@
     "baseUrl": "./" /* Base directory to resolve non-absolute module names. */,
     /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
     "paths": {
-      "@assets/*": ["assets/*"],
-      "@root/*": ["src/root/*"],
-      "@domains/*": ["src/domains/*"],
-      "@hooks/*": ["src/hooks/*"],
-      "@lib/*": ["src/lib/*"],
-      "@utils/*": ["src/utils/*"],
-      "@components/*": ["src/ui/components/*"],
-      "@compounds/*": ["src/ui/compounds/*"],
-      "@mixings/*": ["src/ui/mixings/*"],
-      "@templates/*": ["src/ui/templates/*"]
+      "@config/*": ["./src/config/*"],
+      "@domain/*": ["./src/domain/*"],
+      "@ui/*": ["./src/ui/*"],
+      "@icons/*": ["./assets/images/icons/*"]
     },
 
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
@@ -72,7 +66,7 @@
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
   },
   "exclude": [
-    "node_modules",
+    "./node_modules",
     "babel.config.js",
     "metro.config.js",
     "jest.config.js"

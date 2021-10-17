@@ -1,8 +1,9 @@
 import {Button, Text, View} from 'react-native';
-import * as React from 'react';
-import {ScreenNavigationProp} from '../../../Types/navigationTypes';
+import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import AppScreen from '../../../Theme/AppScreen/AppScreen';
+
+import {ScreenNavigationProp} from '@ui/Types/navigationTypes';
+import AppScreen from '@ui/Theme/AppScreen/AppScreen';
 
 export default function ProfileScreen() {
   const navigation = useNavigation<ScreenNavigationProp>();

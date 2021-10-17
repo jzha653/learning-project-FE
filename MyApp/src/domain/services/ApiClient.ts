@@ -1,5 +1,5 @@
 import {create} from 'apisauce';
-import ApiConfig from '../config/ApiConfig';
+import ApiConfig from '@config/ApiConfig';
 
 export const headers = {
   Accept: 'application/json',
