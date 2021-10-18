@@ -18,6 +18,9 @@ export const AuthReducer = createSlice({
     initApp(state) {
       state.isAppInitiailised = true;
     },
+    set_token(state, payload) {
+      state.token = payload.payload;
+    },
     signUpAction: (_state, _signUpAction) => {
       return undefined;
     },
@@ -31,6 +34,24 @@ export const AuthReducer = createSlice({
     signup_error_action(state, error) {
       state.isAuthPending = false;
       state.authError = error.payload;
+    },
+    loginAction: (_state, _loginAction) => {
+      return undefined;
+    },
+    login_pending_action(state) {
+      state.isAuthPending = true;
+    },
+    login_fulfilled_action(state) {
+      state.isAuthPending = false;
+      state.isUserInitialised = true;
+    },
+    login_error_action(state, error) {
+      state.isAuthPending = false;
+      state.authError = error.payload;
+    },
+    logoutAction(state) {
+      state.isUserInitialised = false;
+      state.token = null;
     },
   },
 });

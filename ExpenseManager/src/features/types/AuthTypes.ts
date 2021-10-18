@@ -12,6 +12,11 @@ export interface SignUpActionPayload {
   password: string;
 }
 
+export interface LoginActionPayload {
+  email: string;
+  password: string;
+}
+
 export interface SignUpResponseAction {
   type: string;
   email: string;
