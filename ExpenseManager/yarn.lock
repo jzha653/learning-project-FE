@@ -6429,6 +6429,11 @@ resolve@^2.0.0-next.3:
     is-core-module "^2.2.0"
     path-parse "^1.0.6"
 
+rest-api-response@^0.7.83:
+  version "0.7.83"
+  resolved "https://registry.yarnpkg.com/rest-api-response/-/rest-api-response-0.7.83.tgz#f2bd7f78c0a95989df519deb2b2e543397e424da"
+  integrity sha512-adjN94g8knJVYWwsrrM2RMiYFnAKQ1fHRo6W3gEyIqNuqQuh1zRjVF5RGjLhi3IrsS5aOrrMJzule0TntMeFYg==
+
 restore-cursor@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/restore-cursor/-/restore-cursor-2.0.0.tgz#9f7ee287f82fd326d4fd162923d62129eee0dfaf"

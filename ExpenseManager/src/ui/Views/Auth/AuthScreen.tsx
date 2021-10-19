@@ -6,13 +6,18 @@ import AppScreen from '@ui/Theme/AppScreen/AppScreen';
 import Colors from '@ui/Theme/Colours';
 import Fonts from '@ui/Theme/Fonts';
 
-import {AuthActions} from '@features/reducers/AuthReducer';
+import {AuthActions} from '@features/reducers/Auth/AuthReducer';
 import styled from 'styled-components/native';
 import ContentCard from '@ui/Theme/Card/ContentCard';
 import Button from '@ui/Theme/Button/AppButton';
-import {getError, getIsAuthPending} from '@features/selectors/AuthSelectors';
+import {
+  getError,
+  getIsAuthPending,
+} from '@features/selectors/Auth/AuthSelectors';
+import {Platform} from 'react-native';
+import {RequestStatus} from '@features/reducers';
 
-const AppScreenWrapper = styled.View`
+const AppScreenWrapper = styled.KeyboardAvoidingView`
   align-items: center;
   flex: 1;
 `;
@@ -41,7 +46,7 @@ const InputLabel = styled.Text`
   color: ${Colors.inputLabel};
 `;
 
-const ButtonWrapper = styled.View`
+export const ButtonWrapper = styled.View`
   flex: 1;
   flex-direction: column;
   justify-content: flex-end;
@@ -109,7 +114,7 @@ export default function AuthScreen() {
 
   return (
     <AppScreen title="Auth">
-      <AppScreenWrapper>
+      <AppScreenWrapper behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <SwitchWrapper>
           <SwitchSelector
             textColor={Colors.titleBar}
@@ -144,7 +149,7 @@ export default function AuthScreen() {
             theme="primary"
             title="Continue"
             onPress={handleAuth}
-            isLoading={authLoading}
+            isLoading={authLoading === RequestStatus.Pending}
           />
         </ButtonWrapper>
       </AppScreenWrapper>

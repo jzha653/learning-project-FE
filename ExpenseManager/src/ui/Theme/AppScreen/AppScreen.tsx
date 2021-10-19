@@ -3,9 +3,9 @@ import Background from '@ui/Theme/AppScreen/Background/Background';
 
 export interface AppScreenProps {
   title?: string;
-  children?: React.ReactElement<any> | null;
-  headerLeft?: React.ReactElement<any> | null;
-  headerRight?: React.ReactElement<any> | null;
+  children?: React.ReactElement<unknown> | null;
+  headerLeft?: React.ReactElement<unknown> | null;
+  headerRight?: React.ReactElement<unknown> | null;
 }
 
 export default function AppScreen(props: AppScreenProps) {

@@ -2,7 +2,7 @@ import {Text} from 'react-native';
 import React, {useEffect} from 'react';
 import {useDispatch} from 'react-redux';
 
-import {AuthActions} from '@features/reducers/AuthReducer';
+import {BootstrapActions} from '@features/reducers/Core/Bootstrap/BootstrapReducer';
 import styled from 'styled-components/native';
 import Colours from '@ui/Theme/Colours';
 
@@ -16,10 +16,8 @@ export default function SplashScreen() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch(AuthActions.initApp());
-    }, 3000);
-  });
+    dispatch(BootstrapActions.initApp());
+  }, [dispatch]);
 
   return (
     <Backgroud>

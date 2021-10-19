@@ -1,28 +1,28 @@
 import {call, put} from 'redux-saga/effects';
-import {Login} from '@features/services/AuthService';
+import {Login} from '@features/services/Auth/AuthService';
 import {
   LoginActionPayload,
-  SignUpResponseAction,
-} from '@features/types/AuthTypes';
-import {AuthActions} from '@features/reducers/AuthReducer';
+  SignUpResponse,
+} from '@features/types/Auth/AuthTypes';
+import {AuthActions} from '@features/reducers/Auth/AuthReducer';
 import {Action} from 're-reduced';
-import {AxiosResponse} from 'axios';
-
+import {ApiResponse} from 'apisauce';
 export default function* login(action: Action<LoginActionPayload>) {
   yield put(AuthActions.login_pending_action());
 
   const payload: LoginActionPayload = action.payload;
 
   try {
-    const response: AxiosResponse<SignUpResponseAction> = yield call(
-      Login,
-      payload,
-    );
-    if (response.data.token) {
-      yield put(AuthActions.set_token(response.data.token));
-      yield put(AuthActions.login_fulfilled_action());
+    const response: ApiResponse<SignUpResponse> = yield call(Login, payload);
+    if (response.ok) {
+      if (response.data && response.data.token) {
+        yield put(AuthActions.setToken(response.data?.token));
+        yield put(AuthActions.login_fulfilled_action());
+      } else {
+        yield put(AuthActions.login_error_action('No Token Found'));
+      }
     } else {
-      yield put(AuthActions.login_error_action(response.data));
+      yield put(AuthActions.login_error_action(response?.data));
     }
   } catch (e) {
     yield put(

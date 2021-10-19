@@ -12,10 +12,8 @@ import SelectCategoryModal from '@ui/Modal/SelectCategoryModal';
 import {RootRoutes} from '@ui/Routes/Routes';
 import {RootStackParamList} from '@ui/Types/navigationTypes';
 import SplashScreen from '@ui/Views/SplashScreen/SplashScreeen';
-import {
-  getIsAppInitialized,
-  getIsUserInitialized,
-} from '@features/selectors/AuthSelectors';
+import {getIsUserInitialized} from '@features/selectors/Auth/AuthSelectors';
+import {getIsAppInitialized} from '@features/selectors/Core/Bootstrap/BootstrapSelector';
 
 export default function RootNavigator() {
   const Stack = createStackNavigator<RootStackParamList>();

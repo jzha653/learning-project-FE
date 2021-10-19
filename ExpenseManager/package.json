@@ -35,6 +35,7 @@
     "reactotron-redux": "^3.1.3",
     "redux-persist": "^6.0.0",
     "redux-saga": "^1.1.3",
+    "rest-api-response": "^0.7.83",
     "styled-components": "^5.3.1"
   },
   "devDependencies": {

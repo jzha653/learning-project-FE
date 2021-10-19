@@ -1,7 +1,7 @@
+import {RequestStatus} from '@features/reducers';
 export interface AuthState {
-  isAppInitiailised: boolean;
   isUserInitialised: boolean;
-  isAuthPending: boolean;
+  authStatus: RequestStatus;
   authError: string | null;
   token: string | null;
 }
@@ -17,8 +17,7 @@ export interface LoginActionPayload {
   password: string;
 }
 
-export interface SignUpResponseAction {
-  type: string;
+export interface SignUpResponse {
   email: string;
   password: string;
   token: string;

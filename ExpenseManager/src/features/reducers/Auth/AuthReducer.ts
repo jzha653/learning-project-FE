@@ -1,12 +1,12 @@
 import {persistReducer} from 'redux-persist';
 import AsyncStorage from '@react-native-community/async-storage';
 import {createSlice} from '@reduxjs/toolkit';
-import {AuthState} from '@features/types/AuthTypes';
+import {AuthState} from '@features/types/Auth/AuthTypes';
+import {RequestStatus} from '@features/reducers/index';
 
 const initialState: AuthState = {
-  isAppInitiailised: false,
   isUserInitialised: false,
-  isAuthPending: false,
+  authStatus: RequestStatus.Idle, //  status
   authError: null,
   token: null,
 };
@@ -15,44 +15,35 @@ export const AuthReducer = createSlice({
   name: 'auth',
   initialState: initialState,
   reducers: {
-    initApp(state) {
-      state.isAppInitiailised = true;
-    },
-    set_token(state, payload) {
+    setToken(state, payload) {
       state.token = payload.payload;
     },
-    signUpAction: (_state, _signUpAction) => {
-      return undefined;
-    },
+    signUpAction: (_state, _signUpAction) => undefined,
     signup_pending_action(state) {
-      state.isAuthPending = true;
+      state.authStatus = RequestStatus.Pending;
     },
     signup_fulfilled_action(state) {
-      state.isAuthPending = false;
+      state.authStatus = RequestStatus.Fulfilled;
       state.isUserInitialised = true;
     },
     signup_error_action(state, error) {
-      state.isAuthPending = false;
+      state.authStatus = RequestStatus.Failed;
       state.authError = error.payload;
     },
-    loginAction: (_state, _loginAction) => {
-      return undefined;
-    },
+    loginAction: (_state, _loginAction) => undefined,
     login_pending_action(state) {
-      state.isAuthPending = true;
+      state.authStatus = RequestStatus.Pending;
     },
     login_fulfilled_action(state) {
-      state.isAuthPending = false;
+      state.authStatus = RequestStatus.Fulfilled;
       state.isUserInitialised = true;
     },
     login_error_action(state, error) {
-      state.isAuthPending = false;
+      state.authStatus = RequestStatus.Failed;
       state.authError = error.payload;
     },
-    logoutAction(state) {
-      state.isUserInitialised = false;
-      state.token = null;
-    },
+    logoutAction: () => undefined,
+    reset: () => initialState,
   },
 });
 

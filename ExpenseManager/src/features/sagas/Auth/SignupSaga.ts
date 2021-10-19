@@ -1,24 +1,23 @@
 import {call, put} from 'redux-saga/effects';
-import {signUp} from '@features/services/AuthService';
+import {signUp} from '@features/services/Auth/AuthService';
 import {
   SignUpActionPayload,
-  SignUpResponseAction,
-} from '@features/types/AuthTypes';
-import {AuthActions} from '@features/reducers/AuthReducer';
+  SignUpResponse,
+} from '@features/types/Auth/AuthTypes';
+import {AuthActions} from '@features/reducers/Auth/AuthReducer';
 import {Action} from 're-reduced';
-import {AxiosResponse} from 'axios';
+import {ApiResponse} from 'apisauce';
 
 export default function* signup(action: Action<SignUpActionPayload>) {
   yield put(AuthActions.signup_pending_action());
   const payload: SignUpActionPayload = action.payload;
 
   try {
-    const response: AxiosResponse<SignUpResponseAction> = yield call(
-      signUp,
-      payload,
-    );
-    if (response.data.token) {
-      yield put(AuthActions.set_token(response.data.token));
+    // change type to APIresponse<SignupResponse>
+    const response: ApiResponse<SignUpResponse> = yield call(signUp, payload);
+    // check status code / ok fro successful
+    if (response.ok) {
+      yield put(AuthActions.setToken(response.data?.token));
       yield put(AuthActions.signup_fulfilled_action());
     } else {
       yield put(AuthActions.signup_error_action(response.data));
