@@ -15,6 +15,26 @@ export const UserReducer = createSlice({
   name: 'user',
   initialState: UserInitialState,
   reducers: {
+    update: (_state, _signUpAction) => undefined,
+    resetUpdateStatus(state) {
+      state.updateUserStatus = RequestStatus.Idle;
+    },
+    update_pending(state) {
+      state.updateUserStatus = RequestStatus.Pending;
+    },
+    update_fulfilled(state) {
+      state.updateUserStatus = RequestStatus.Fulfilled;
+    },
+    update_error(state, error) {
+      state.updateUserStatus = RequestStatus.Failed;
+      state.updateUserError = error.payload;
+    },
+    set_name(state, name) {
+      state.name = name.payload;
+    },
+    set_email(state, email) {
+      state.email = email.payload;
+    },
     reset: () => UserInitialState,
   },
 });

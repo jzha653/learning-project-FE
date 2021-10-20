@@ -6,3 +6,13 @@ export interface UserState {
   updateUserStatus: RequestStatus;
   updateUserError: string | null;
 }
+
+export interface UpdatePayload {
+  name: string;
+}
+
+export interface UpdateResponse {
+  email: string;
+  name: string;
+  token: string;
+}

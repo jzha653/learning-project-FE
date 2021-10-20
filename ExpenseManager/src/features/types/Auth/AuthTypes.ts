@@ -19,6 +19,6 @@ export interface LoginActionPayload {
 
 export interface SignUpResponse {
   email: string;
-  password: string;
+  name: string;
   token: string;
 }

@@ -6,3 +6,5 @@ export const getIsUserInitialized = (state: State) =>
 export const getError = (state: State) => state.auth.authError;
 
 export const getIsAuthPending = (state: State) => state.auth.authStatus;
+
+export const getToken = (state: State) => state.auth.token;

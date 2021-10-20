@@ -27,19 +27,19 @@ const SwitchWrapper = styled.View`
   width: 100%;
 `;
 
-const CardContentWrapper = styled.View`
+export const CardContentWrapper = styled.View`
   flex-direction: column;
   width: 100%;
 `;
 
-const CardInput = styled.TextInput`
+export const CardInput = styled.TextInput`
   margin-top: 5px;
   font-size: ${Fonts.big};
   border-bottom-color: blue;
   border-bottom-width: 1px;
 `;
 
-const InputLabel = styled.Text`
+export const InputLabel = styled.Text`
   margin-top: 5px;
   margin-bottom: 5px;
   font-size: ${Fonts.base};

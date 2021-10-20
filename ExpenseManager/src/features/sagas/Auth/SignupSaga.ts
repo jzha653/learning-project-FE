@@ -7,6 +7,8 @@ import {
 import {AuthActions} from '@features/reducers/Auth/AuthReducer';
 import {Action} from 're-reduced';
 import {ApiResponse} from 'apisauce';
+import {setAuthToken} from '@features/services/ApiClient';
+import {UserActions} from '@features/reducers/User/UserReducer';
 
 export default function* signup(action: Action<SignUpActionPayload>) {
   yield put(AuthActions.signup_pending_action());
@@ -18,6 +20,9 @@ export default function* signup(action: Action<SignUpActionPayload>) {
     // check status code / ok fro successful
     if (response.ok) {
       yield put(AuthActions.setToken(response.data?.token));
+      yield put(UserActions.set_name(response.data?.name));
+      yield put(UserActions.set_email(response.data?.email));
+      setAuthToken(response.data?.token);
       yield put(AuthActions.signup_fulfilled_action());
     } else {
       yield put(AuthActions.signup_error_action(response.data));

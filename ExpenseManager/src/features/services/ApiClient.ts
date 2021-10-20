@@ -13,3 +13,12 @@ const apiClient = create({
 });
 
 export {apiClient};
+
+export const setAuthToken = (token: string | undefined) => {
+  apiClient.headers.Authorization = '';
+  delete apiClient.headers.Authorization;
+
+  if (token) {
+    apiClient.headers.Authorization = `Bearer ${token}`;
+  }
+};
